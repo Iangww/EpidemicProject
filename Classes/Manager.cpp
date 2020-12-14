@@ -20,7 +20,7 @@ Manager::Manager(std::string inputDataFilename, std::string planFilename, std::s
 
 void Manager::runExperiment()
 {
-	//Preparing input and output files
+	//Preparing input and output filestreams
 	std::ifstream planInputs(planFile);
 	std::ofstream outputs(outputFile);
 	int iterations{0};
@@ -58,6 +58,7 @@ void Manager::runExperiment()
 				{
 					outputs << values[j] << ", ";
 				}
+				//The output to be printed is the average of the total deaths for this trial over all the samples
 				outputs << (int)round((double)deaths / sampleSize) << "\n";
 				std::cout << i + 1 << " out of " << iterations << " simulations completed.\n";
 			}

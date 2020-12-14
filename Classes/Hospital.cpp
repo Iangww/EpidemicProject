@@ -10,6 +10,7 @@ void Hospital::Update()
     {
         if (beds > 0 && (*i)->isSymptomatic() && (*i)->getHealth() < 4)
         {
+            //If beds are available and the person is symptomatic and at low overallHealth, the hospital environment commits one of its beds to that person
             (*i)->improveCondition();
             beds--;
         }
@@ -18,7 +19,7 @@ void Hospital::Update()
 
 Environment *Hospital::Duplicate()
 {
-    //This function is used to create many identical copies of the prototype publicSpace when populating the city environment list
+    //This function is used to create many identical copies of the prototype hospital when populating the city environment list
     Environment *output = new Hospital(disease, totalBeds);
     return output;
 }
